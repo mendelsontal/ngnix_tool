@@ -3,13 +3,13 @@
 #Developed by: Tal Mendelson
 #Purpose: This script is used by setup.sh script to check for Ngnix & Script version and prints it to the user.
 #Date:07/03/2025
-#Version: 0.0.2
+#Version: 0.0.2 of check_version.sh
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 # Version Check
 function CHECK_VERSION(){
     # Vars
-    SCRIPT_VERSION="0.0.2"
+    SCRIPT_VERSION="0.0.3"
 
     # Prints both script version & Ngnix version if installed.
     printf "${BOLD}${CYAN}Versions:${RESET}"

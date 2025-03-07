@@ -3,7 +3,7 @@
 #Developed by: Tal Mendelson
 #Purpose: This script is used by setup.sh script to print help manual to the user.
 #Date:07/03/2025
-#Version: 0.0.2
+#Version: 0.0.2 of Help
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 function FUNC_HELP(){

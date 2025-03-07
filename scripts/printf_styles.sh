@@ -3,7 +3,7 @@
 #Developed by: Tal Mendelson
 #Purpose: This script is used to allow printf styles and colors with ease.
 #Date:07/03/2025
-#Version: 0.0.1
+#Version: 0.0.1 of printf_styles.sh
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 # ============================
