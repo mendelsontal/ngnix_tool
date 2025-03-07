@@ -1,4 +1,4 @@
-[![Ngnix](https://img.shields.io/badge/Ngnix%20Task-8A2BE2)]([https://img.shields.io/badge/Ngnix%20Task-8A2BE2)) [![GitHub contributors](https://img.shields.io/github/contributors/mendelsontal/ngnix_tool)](https://github.com/mendelsontal/ngnix_tool/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/mendelsontal/ngnix_tool)](https://github.com/mendelsontal/ngnix_tool/issues)
+[![Ngnix](https://img.shields.io/badge/Ngnix%20Task-8A2BE2)]([https://img.shields.io/badge/Ngnix%20Task-8A2BE2) [![GitHub contributors](https://img.shields.io/github/contributors/mendelsontal/ngnix_tool)](https://github.com/mendelsontal/ngnix_tool/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/mendelsontal/ngnix_tool)](https://github.com/mendelsontal/ngnix_tool/issues)
 # Ngnix Task
 <!-- ABOUT THE PROJECT -->
 ## 📌 Project Overview
