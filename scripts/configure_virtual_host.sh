@@ -2,8 +2,8 @@
 ############################################################ /ᐠ｡ꞈ｡ᐟ\############################################################
 #Developed by: Tal Mendelson
 #Purpose: This script is used by setup.sh script to configure a new virtual host machine.
-#Date:06/03/2025
-#Version: 0.0.2
+#Date:07/03/2025
+#Version: 0.0.3 of configure_virtual_host.sh
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 ### Functions
@@ -109,8 +109,29 @@ server {
     index index.html index.htm index.php;
 
     location / {
+        auth_basic "Restricted Area";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        
         try_files $uri $uri/ =404;
     }
+
+    location /cgi-bin/ {
+    gzip off;
+    include fastcgi_params;
+    fastcgi_pass unix:/run/fcgiwrap.socket;
+    fastcgi_param SCRIPT_FILENAME /home/$1/public_html$2$fastcgi_script_name;
+    fastcgi_param QUERY_STRING $query_string;
+    fastcgi_param REQUEST_METHOD $request_method;
+    fastcgi_param CONTENT_TYPE $content_type;
+    fastcgi_param CONTENT_LENGTH $content_length;
+    }
+
+    # User directory support
+    location ~ ^/~([^/]+)(/.*)?$ {
+        alias /home/$1/public_html$2;
+        index index.html index.htm;
+    }
+    
 
     access_log /var/log/nginx/${VHOST_NAME}_access.log;
     error_log /var/log/nginx/${VHOST_NAME}_error.log;

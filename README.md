@@ -23,15 +23,41 @@ The goal is to provide an automated and flexible way to configure Nginx for thes
   - 📜 <span style="display: inline-block; margin-right: 20px;">[setup.sh](./setup.sh)</span> Main shell script for Nginx setup  
   - 📄 <span style="display: inline-block; margin-right: 20px;">[task.md](./task.md)</span> Contains the task description  
   - **📂 <span style="display: inline-block; margin-right: 20px;">[config/](./config)</span>** Configuration files  
-    - 📄 <span style="display: inline-block; margin-right: 20px;">[index.html](./config/index.html)</span> Landing page used by the script  
-  - **📂 <span style="display: inline-block; margin-right: 20px;">[scripts/](./scripts)</span>** Helper scripts  
+    - 📄 <span style="display: inline-block; margin-right: 20px;">[index.html](./config/index.html)</span> Landing page used by the script as default 
+  - **📂 <span style="display: inline-block; margin-right: 20px;">[scripts/](./scripts)</span>** Helper scripts
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[check_ngnix.sh](./check_ngnix.sh)</span> Holds required functions for running
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[check_version.sh](./scripts/check_version.sh)</span> Checks for script and Ngnix versions
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[help_function.sh](./scripts/help_function.sh)</span> Prints the Help section to the user
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[check_ngnix.sh](./scripts/check_ngnix.sh)</span> Holds required functions for running
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_logit.sh](./scripts/configure_logit.sh)</span> Script for setting Logit for logs
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_virtual_host.sh](./scripts/configure_virtual_host.sh)</span> Script for configuring Virtual Hosts  
+    - 📜 <span style="display: inline-block; margin-right: 20px;">[printf_styles.sh](./scripts/printf_styles.sh)</span> Script for managing printf styles and colors
   - **📂 <span style="display: inline-block; margin-right: 20px;">[docs/](./docs)</span>** Documentation  
     - 📄 <span style="display: inline-block; margin-right: 20px;">[INSTALLATION.md](./docs/INSTALLATION.md)</span> Installation guide  
     - 📄 <span style="display: inline-block; margin-right: 20px;">[USAGE.md](./docs/USAGE.md)</span> Usage instructions  
 
 <!-- GETTING STARTED -->
 ## Getting Started
+Before you begin, ensure that your system meets the following requirements:
 
+
+### 1. Pre-Requisites:
+- Bash and wget installed
+- Linux based system (Debian)
+
+### 2. Cloning the Repository:
+- How to clone the repository:
+```bash
+git clone https://github.com/mendelsontal/ngnix_tool.git
+cd ngnix_tool
+```
+
+### 3. Running the Setup Script:
+- Steps to run the setup.sh:
+```bash
+chmod +x setup.sh
+./setup.sh
+```
 
 <!-- Installation -->
 ## Installation
@@ -44,6 +70,19 @@ The goal is to provide an automated and flexible way to configure Nginx for thes
 <!-- CONTRIBUTERS -->
 ## 👥 Contributers
 - [Tal](https://github.com/mendelsontal)
+
+## 🚀 Roadmap
+Here’s a list of features planned for future releases:
+v0.0.4
+- pass arguments to configure
+ - enable user-specific directories (--user_dir)
+ - enable basic authentication (--auth)
+ - enable CGI scripting (--cgi)
+- test argument to check configurations etc (--test)
+- update argument to check for ngnix & dependency updates (--update)
+
+v0.0.5
+- add other disributions compatabilit, starting with ubuntu
 
 <!-- LICENSE -->
 ## License

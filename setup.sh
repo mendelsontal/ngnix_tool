@@ -6,7 +6,7 @@
 #         checks and installs dependencies for user directories,
 #         authentication, and CGI, while providing an argument-based system for selective installation and configuration.
 #Date:07/03/2025
-#Version: 0.0.2
+#Version: 0.0.3 of setup.sh
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 # ============================
@@ -34,7 +34,7 @@ source ./scripts/configure_virtual_host.sh      # Configure a virtual host scrip
 # Nginx setup.sh start
 # ============================
 
-# Check if at least one argument is provided
+# Check if at least one argument is provided.
 if [ $# -lt 1 ]; then
     printf "${BOLD}Usage: $0 {--help | --version}${RESET}\n\n"
 fi
@@ -51,9 +51,11 @@ fi
 
 # Configure a Virtual Host
 if [[ "$1" == "configure" ]]; then
-    CONFIGURE_LOGIT
-    CHECK_NGINX
-    # Check if both parameters $2 and $3 are provided.
+    CONFIGURE_LOGIT # Logit setup & activation.
+    UPDAPT # Makes sure the system has the atest info on available packages.
+    CHECK_NGINX  # Checks for Ngnix and installs
+    
+    # Check if both parameters $2 and $3 are provided for configure option.
     if [ -n "$2" ] && [ -n "$3" ]; then
         # If both parameters are provided, pass them to the function.
         CONFIGURE_VHOST "$2" "$3" "$4"
@@ -61,10 +63,19 @@ if [[ "$1" == "configure" ]]; then
         # If parameters are missing, just call the function without them.
         CONFIGURE_VHOST
     fi
+    CHECK_USER_DIR_SUPPORT # User directory support.
+    CHECK_HTPPASSWD_FCGI # Checks for .htpasswd file and adds a user + fcgi checks and set.
+
+    # Reloads Ngnix
+    systemctl reload nginx
 fi
 
 # Check for Ngnix & Install
 if [[ "$1" == "install" ]]; then
-    CONFIGURE_LOGIT
-    CHECK_NGINX
+    CONFIGURE_LOGIT # Logit setup & activation.
+    UPDAPT # Makes sure the system has the atest info on available packages.
+    CHECK_NGINX # Checks for Ngnix and installs.
+
+    # Reloads Ngnix
+    systemctl reload nginx
 fi
