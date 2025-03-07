@@ -73,7 +73,13 @@ chmod +x setup.sh
 
 ## 🚀 Roadmap
 Here’s a list of features planned for future releases:
+
 v0.0.4
+- Expend the --help function
+- Add Usage instructions (Currently empty)
+- Add Installation instructions (Currently empty)
+
+v0.0.5
 - pass arguments to configure
  - enable user-specific directories (--user_dir)
  - enable basic authentication (--auth)
@@ -81,7 +87,7 @@ v0.0.4
 - test argument to check configurations etc (--test)
 - update argument to check for ngnix & dependency updates (--update)
 
-v0.0.5
+v0.0.6
 - add other disributions compatabilit, starting with ubuntu
 
 <!-- LICENSE -->
