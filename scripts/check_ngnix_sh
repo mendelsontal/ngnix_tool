@@ -3,7 +3,7 @@
 #Developed by: Tal Mendelson
 #Purpose: This script is used by setup.sh script to check for Ngnix, and install of missing.
 #Date:07/03/2025
-#Version: 0.0.1
+#Version: 0.0.2
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 function CHECK_NGINX(){
@@ -45,6 +45,5 @@ function CHECK_NGINX(){
     else # Installed
         printf "\n${BOLD}${GREEN}Ngnix installation detected:${RESET}\n"
         nginx -v
-        printf "\nExiting Script...\n"
     fi
 }

@@ -6,7 +6,7 @@
 #         checks and installs dependencies for user directories,
 #         authentication, and CGI, while providing an argument-based system for selective installation and configuration.
 #Date:07/03/2025
-#Version: 0.0.1
+#Version: 0.0.2
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 # ============================
@@ -25,7 +25,7 @@ fi
 source ./scripts/printf_styles.sh               # Script for printf styles and colors.
 source ./scripts/check_version.sh               # Script for printing the script & Ngnix version.
 source ./scripts/help_function.sh               # Script for printing help to the user.
-source ./scripts/logit_script.sh                # Logit setup script, requires user approval.
+source ./scripts/configure_logit.sh                # Logit setup script, requires user approval.
 source ./scripts/check_ngnix_sh                 # Checks for Ngnix presence on the machine, asks user if he wishes to install.
 source ./scripts/configure_virtual_host.sh      # Configure a virtual host script
 
@@ -39,7 +39,7 @@ if [ $# -lt 1 ]; then
     printf "${BOLD}Usage: $0 {--help | --version}${RESET}\n\n"
 fi
 
-# Help section
+# Help sectionvi
 if [[ "$1" == "--help" ]]; then
     FUNC_HELP
 fi
@@ -53,11 +53,18 @@ fi
 if [[ "$1" == "configure" ]]; then
     CONFIGURE_LOGIT
     CHECK_NGINX
-    CONFIGURE_VHOST
+    # Check if both parameters $2 and $3 are provided.
+    if [ -n "$2" ] && [ -n "$3" ]; then
+        # If both parameters are provided, pass them to the function.
+        CONFIGURE_VHOST "$2" "$3" "$4"
+    else
+        # If parameters are missing, just call the function without them.
+        CONFIGURE_VHOST
+    fi
 fi
 
 # Check for Ngnix & Install
-if [[ "$1" == "configure" ]]; then
+if [[ "$1" == "install" ]]; then
     CONFIGURE_LOGIT
     CHECK_NGINX
 fi

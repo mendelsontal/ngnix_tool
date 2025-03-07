@@ -2,8 +2,8 @@
 ############################################################ /ᐠ｡ꞈ｡ᐟ\############################################################
 #Developed by: Tal Mendelson
 #Purpose: This script is used by setup.sh script to allow Logit setup & actication.
-#Date:06/03/2025
-#Version: 0.0.1
+#Date:07/03/2025
+#Version: 0.0.2
 ############################################################ /ᐠ｡ꞈ｡ᐟ\ ############################################################
 
 # Function for Logs - Logit
@@ -20,18 +20,17 @@ if [ -f "/usr/local/bin/logit.sh" ]; then
     # Starts Logit
     logit start
 else
-    if [ $ASK_TO_DOWNLOAD == "Enabled" ]
-        printf "\n Logit not detected on your machine, would you like to download it?\n(Yes / Skip / No ) - If you select No, this message will not show on the next run." && read downloadlogit
+    if [ $ASK_TO_DOWNLOAD == "Enabled" ]; then
+        printf "\nLogit not detected on your machine, would you like to download it?\n(Yes / Skip / No ) - If you select No, this message will not show on the next run.\n" && read USER_CONFIRMATION
         case "$USER_CONFIRMATION" in
             y |  yes | Yes | YES)
                 # If user chooses Yes
-            wget -P /usr/local/bin/ "https://github.com/mendelsontal/devops_course/blob/main/bash/logit/logit.sh"
+            wget -P /usr/local/bin/ "https://raw.githubusercontent.com/mendelsontal/devops_course/refs/heads/main/bash/logit/logit.sh"
             ;;
             n | no | No | NO)
                 # If user chooses No, continues
                 printf "\nYou selected No. continuing.\n"
-                sed -i 's/ASK_TO_DOWNLOAD="Enabled"/ASK_TO_DOWNLOAD="Disabled"/' "$0"
-
+                sed -i 's/ASK_TO_DOWNLOAD="Enabled"/ASK_TO_DOWNLOAD="Disabled"/' ./scripts/configure_logit.sh
             ;;
             Skip | skip | SKIP)
                 # If user chooses No, continues
@@ -41,6 +40,7 @@ else
                 # Invalid input
                 printf "\nInvalid input. skipping.\n"
             ;;
+        esac
     fi
 fi
 }
