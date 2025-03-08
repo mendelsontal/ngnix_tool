@@ -61,55 +61,6 @@ function CHECK_NGINX_EXTRAS(){
     fi
 }
 
-# =============================
-# Checks for Ngnix and installs
-# =============================
-function CHECK_NGINX(){
-    # Checks if not already installed
-    if ! command -v nginx &> /dev/null; then
-        printf "\n${BOLD}Do you wish to install Nginx on this machine?${RESET}\n\n"
-        # Choices - Intall Ngnix
-        printf "# ============================= #\n"
-        printf "1) ${BLUE}Install Ngnix.${RESET}\n"
-        printf "2) ${BLUE}Cancel.${RESET}\n"
-        printf "# ============================= #\n\n"
-
-        # User selection
-        printf "${BOLD}Do you wish to install Nginx and dependencies?${RESET} (1 = Yes / 2 = No ) " && read ngnix_install_choice
-        case "$ngnix_install_choice" in
-            1) 
-                # Install.
-                apt install -y nginx
-                CHECK_APACHE2_UTILS # Checks for apache2-utils
-                CHECK_NGINX_EXTRAS # Check for nginx-extras
-                CHECK_FCGI_APT # Checks for fcgiwrap and spawn-fcgi
-
-                ## Check status
-                    if command -v nginx > /dev/null 2>&1; then
-                        printf "\n${BOLD}${GREEN}Nginx installation completed successfully.${RESET}\n\n"
-                        nginx -v
-                    else
-                        printf "\n${BOLD}${RED}ERROR - Something went wrong.${RESET}\n\n"
-                    fi
-            ;;
-            2)
-                # Cancel.
-                printf "Ngnix installation canceled, exiting script.\n\n"
-                exit 0
-            ;;
-            *)
-                # Invalid option.
-                printf "\n${RED}${BOLD}Invalid option.${RESET}\n"
-                exit 1
-            ;;
-        esac
-
-    else # Installed
-        printf "\n${BOLD}${GREEN}Ngnix installation detected:${RESET}\n"
-        nginx -v
-    fi
-}
-
 # ============================
 # Checks for .htpasswd file,
 # and adds a user +
@@ -117,7 +68,7 @@ function CHECK_NGINX(){
 # ============================
 function CHECK_HTPPASSWD_FCGI(){
     # Checks if apache2-utils is installed, if not tries to install
-    CHECK_APACHE2_UTILS # Checks for apache2-utils
+    #CHECK_APACHE2_UTILS # Checks for apache2-utils
 
     # Create .htpasswd file
     printf "\nEnter username for authentication:\n" && read USERNAME
@@ -207,4 +158,57 @@ function CHECK_USER_DIR_SUPPORT(){
         fi
     fi
 
+}
+
+# =============================
+# Checks for Ngnix and installs
+# =============================
+function CHECK_NGINX(){
+    # Checks if not already installed
+    if ! command -v nginx &> /dev/null; then
+        printf "\n${BOLD}Do you wish to install Nginx on this machine?${RESET}\n\n"
+        # Choices - Intall Ngnix
+        printf "# ============================= #\n"
+        printf "1) ${BLUE}Install Ngnix.${RESET}\n"
+        printf "2) ${BLUE}Cancel.${RESET}\n"
+        printf "# ============================= #\n\n"
+
+        # User selection
+        printf "${BOLD}Do you wish to install Nginx and dependencies?${RESET} (1 = Yes / 2 = No ) " && read ngnix_install_choice
+        case "$ngnix_install_choice" in
+            1) 
+                # Install.
+                apt install -y nginx
+                if [ $2 == '--all' ];then
+                CHECK_APACHE2_UTILS # Checks for apache2-utils
+                CHECK_NGINX_EXTRAS # Check for nginx-extras
+                CHECK_FCGI_APT # Checks for fcgiwrap and spawn-fcgi
+                CHECK_USER_DIR_SUPPORT #User directory support
+                CHECK_HTPPASSWD_FCGI # Checks for .htpasswd file, and adds a user + fcgi checks and set
+                fi
+
+                ## Check status
+                    if command -v nginx > /dev/null 2>&1; then
+                        printf "\n${BOLD}${GREEN}Nginx installation completed successfully.${RESET}\n\n"
+                        nginx -v
+                    else
+                        printf "\n${BOLD}${RED}ERROR - Something went wrong.${RESET}\n\n"
+                    fi
+            ;;
+            2)
+                # Cancel.
+                printf "Ngnix installation canceled, exiting script.\n\n"
+                exit 0
+            ;;
+            *)
+                # Invalid option.
+                printf "\n${RED}${BOLD}Invalid option.${RESET}\n"
+                exit 1
+            ;;
+        esac
+
+    else # Installed
+        printf "\n${BOLD}${GREEN}Ngnix installation detected:${RESET}\n"
+        nginx -v
+    fi
 }

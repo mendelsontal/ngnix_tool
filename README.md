@@ -32,16 +32,14 @@ The goal is to provide an automated and flexible way to configure Nginx for thes
     - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_logit.sh](./scripts/configure_logit.sh)</span> Script for setting Logit for logs
     - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_virtual_host.sh](./scripts/configure_virtual_host.sh)</span> Script for configuring Virtual Hosts  
     - 📜 <span style="display: inline-block; margin-right: 20px;">[printf_styles.sh](./scripts/printf_styles.sh)</span> Script for managing printf styles and colors
-  - **📂 <span style="display: inline-block; margin-right: 20px;">[docs/](./docs)</span>** Documentation  
-    - 📄 <span style="display: inline-block; margin-right: 20px;">[INSTALLATION.md](./docs/INSTALLATION.md)</span> Installation guide  
+  - **📂 <span style="display: inline-block; margin-right: 20px;">[docs/](./docs)</span>** Documentation   
     - 📄 <span style="display: inline-block; margin-right: 20px;">[USAGE.md](./docs/USAGE.md)</span> Usage instructions  
 
 <!-- GETTING STARTED -->
 ## Getting Started
-Before you begin, ensure that your system meets the following requirements:
-
 
 ### 1. Pre-Requisites:
+Before you begin, ensure that your system meets the following requirements:
 - Bash and wget installed
 - Linux based system (Debian)
 
@@ -58,10 +56,6 @@ cd ngnix_tool
 chmod +x setup.sh
 ./setup.sh
 ```
-
-<!-- Installation -->
-## Installation
-- [Installation](./docs/INSTALLATION.md)
   
 <!-- USAGE -->
 ## Usage
@@ -74,11 +68,6 @@ chmod +x setup.sh
 ## 🚀 Roadmap
 Here’s a list of features planned for future releases:
 
-v0.0.4
-- Expend the --help function
-- Add Usage instructions (Currently empty)
-- Add Installation instructions (Currently empty)
-
 v0.0.5
 - pass arguments to configure
  - enable user-specific directories (--user_dir)
@@ -88,7 +77,7 @@ v0.0.5
 - update argument to check for ngnix & dependency updates (--update)
 
 v0.0.6
-- add other disributions compatabilit, starting with ubuntu
+- add other distribution compatibility, starting with ubuntu
 
 <!-- LICENSE -->
 ## License
