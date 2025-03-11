@@ -19,6 +19,14 @@ exec sudo "$0" "$@"  # Restart script with sudo
 exit 1
 fi
 
+function CHECK_SYSTEM(){
+    LIKE_ID_SYS=$(grep ID_LIKE= /etc/os-release | cut -d= -f2)
+    if [[ $LIKE_ID_SYS == "debian" ]]; then
+        return 0 # Return 0 if it's Debian
+    fi
+    return 1 # Return 1 if not Debian
+}
+
 # ============================
 # Load the external scripts
 # ============================
@@ -29,6 +37,11 @@ source ./scripts/configure_logit.sh                # Logit setup script, require
 source ./scripts/check_ngnix_sh                 # Checks for Ngnix presence on the machine, asks user if he wishes to install.
 source ./scripts/configure_virtual_host.sh      # Configure a virtual host script
 
+CHECK_SYSTEM
+if [[ $? -eq "1" ]]; then
+    printf "${BOLD}${RED} This script was meant for Debian system, get lost!"
+    return 1
+}
 
 # ============================
 # Nginx setup.sh start
@@ -41,7 +54,7 @@ fi
 
 # Help sectionvi
 if [[ "$1" == "--help" ]]; then
-    FUNC_HELP
+    more "./config/help.txt"
 fi
 
 # Version section

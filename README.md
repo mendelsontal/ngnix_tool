@@ -69,14 +69,16 @@ chmod +x setup.sh
 Here’s a list of features planned for future releases:
 
 v0.0.5
+- Add returns 0/1 for all functions.
+- Create template for the configuration, to replace the EOF inside configure_virtual_host.sh
+- update argument to check for ngnix & dependency updates (--update)
+
+v0.0.6
 - pass arguments to configure
  - enable user-specific directories (--user_dir)
  - enable basic authentication (--auth)
  - enable CGI scripting (--cgi)
 - test argument to check configurations etc (--test)
-- update argument to check for ngnix & dependency updates (--update)
-
-v0.0.6
 - add other distribution compatibility, starting with ubuntu
 
 <!-- LICENSE -->

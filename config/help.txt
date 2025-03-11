@@ -1,0 +1,24 @@
+Help:
+
+Usage: ./setup.sh [OPTION]
+ Options:
+  --version      Displays the version of setup.sh and Ngnix.
+  --help         Display this help message.
+  --logit        Allows the user to download and install Logit.
+  install        Installs Ngnix on the machine if not already installed.
+         Options: ./setup.sh install --all
+  configure      Configures a new Virtual Host, while checking for Ngnix on the machine.
+         Options (Optional): ./setup.sh configure <HOSTNAME> <PORTNUMBER> <-y>
+         Please note the <-y> option will only work if you provide the first two arguments."
+
+Description:
+ This script will provide an automated and flexible way to configure Nginx for these features without manual setup.
+  
+Example usage:
+    ./setup.sh --logit    # To install Logit for logs.
+    ./setup.sh --help     # To display this help message.
+    ./setup.sh install    # To install Ngnix on the system.
+    ./setup.sh install --all    # To install Ngnix and all dependencies & set them on the system.
+    ./setup.sh configure  # To configure a new Virtual Host semi-manual.
+    ./setup.sh configure Test 1337 -y # To configure a new Virtual Host with the Hostname of "Test",
+                                        on Port "1337" and "-y" to skil validation.
