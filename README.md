@@ -23,11 +23,11 @@ The goal is to provide an automated and flexible way to configure Nginx for thes
   - 📜 <span style="display: inline-block; margin-right: 20px;">[setup.sh](./setup.sh)</span> Main shell script for Nginx setup  
   - 📄 <span style="display: inline-block; margin-right: 20px;">[task.md](./task.md)</span> Contains the task description  
   - **📂 <span style="display: inline-block; margin-right: 20px;">[config/](./config)</span>** Configuration files  
-    - 📄 <span style="display: inline-block; margin-right: 20px;">[index.html](./config/index.html)</span> Landing page used by the script as default 
+    - 📄 <span style="display: inline-block; margin-right: 20px;">[index.html](./config/index.html)</span> Landing page used by the script as default
+    - 📄 <span style="display: inline-block; margin-right: 20px;">[help.txt](./config/help.txt)</span> Landing page used by the script as default 
   - **📂 <span style="display: inline-block; margin-right: 20px;">[scripts/](./scripts)</span>** Helper scripts
     - 📜 <span style="display: inline-block; margin-right: 20px;">[check_ngnix.sh](./check_ngnix.sh)</span> Holds required functions for running
     - 📜 <span style="display: inline-block; margin-right: 20px;">[check_version.sh](./scripts/check_version.sh)</span> Checks for script and Ngnix versions
-    - 📜 <span style="display: inline-block; margin-right: 20px;">[help_function.sh](./scripts/help_function.sh)</span> Prints the Help section to the user
     - 📜 <span style="display: inline-block; margin-right: 20px;">[check_ngnix.sh](./scripts/check_ngnix.sh)</span> Holds required functions for running
     - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_logit.sh](./scripts/configure_logit.sh)</span> Script for setting Logit for logs
     - 📜 <span style="display: inline-block; margin-right: 20px;">[configure_virtual_host.sh](./scripts/configure_virtual_host.sh)</span> Script for configuring Virtual Hosts  
