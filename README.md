@@ -79,6 +79,12 @@ v0.0.6
  - enable basic authentication (--auth)
  - enable CGI scripting (--cgi)
 - test argument to check configurations etc (--test)
+<<<<<<< HEAD
+=======
+- update argument to check for ngnix & dependency updates (--update)
+
+v0.0.6
+>>>>>>> main
 - add other distribution compatibility, starting with ubuntu
 
 <!-- LICENSE -->
